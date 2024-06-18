@@ -35,21 +35,9 @@
           <!-- Add the Brand -->
           jsonLd.brand = brand;
         }
-        <!-- If everything is fixed, delete the original entry and insert a new product JSON-LD -->
-        if(jsonLd.offers.hasOwnProperty('hasMerchantReturnPolicy') && jsonLd.offers.hasOwnProperty('priceValidUntil') && jsonLd.brand.hasOwnProperty('@type')) {
-          <!-- Convert the object back into a string -->
-          <!-- And update the current JSON-LD entry -->
-          jsonLdScript.innerText = JSON.stringify(jsonLd);
-          <!-- Get the finalized version of the Product -->
-          var newProductJsonLd = '<!-- Injected By Fix Product JSON-LD In Store | Page Header Code Injection --><script type="application/ld+json">';
-          newProductJsonLd += jsonLdScript.innerText;
-          newProductJsonLd += '<\/script><!-- End Injected By Fix Product JSON-LD -->';
-          if(debug) console.log(newProductJsonLd);
-          <!-- Remove the old version from the document -->
-          jsonLdScript.remove();
-          <!-- Insert a new Product based on the modified version -->
-          document.head.insertAdjacentHTML('beforeEnd', newProductJsonLd);
-        }
+        <!-- Convert the object back into a string -->
+        <!-- And update the Product JSON-LD entry -->		
+        jsonLdScript.innerText = JSON.stringify(jsonLd);
         break;
       }
     }
