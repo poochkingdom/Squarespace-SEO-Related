@@ -25,6 +25,31 @@ https://search.google.com/test/rich-results validates you
 https://validator.schema.org/ checks the validity of your JSON-LD
 ### Structured data Linter 
 http://linter.structured-data.org/ is a tool that also looks at the structured data and shows you what it may look like as a snippet.
+## What Are We Aiming For?
+The goal is to correctly set up all of your titles, descriptions, alt text, and other information that the search engines need to fully index your website. It is a process you must adopt and be regimented with. Many of the fields you populate within your side are used to create the hidden meta data and JSON-LD structures that the search engines use. As I have previously iterated, Squarespace does not do a great job of populating the information, so in some cases we just overwrite their data with ours.
+### SEO Appearance
+In the Settings | Marketing | SEO Appearance tab you can tell Squarespace how you want it to display your page titles. It uses simple % parameters to help you define the format. The value %s represents the value for your business name; %p is the page name; %i is the product or item name if you have a store.
+
+For example, for my home page I have chosen to display my company name first, then the page title "Home", so my SEO setting is %s - %p. For regular pages I have chosen to display the page title first, then the company name, so the setting is %p - %s. For products I use %i - %p. This allows the end-user to see the company name in the tab of the home page, then see the page titles as they browse around the site. The title comes from one of two places: 1) the Page Settings | Title field, or 2) the Page Settings | SEO | SEO Title field. The only exception to this is the home page. 
+### Titles
+> [!IMPORTANT]
+> The words you put into the title become the title text displayed in the search results, along with the link and the description. This is going to be one of the main drivers to your website as it tells the end-users what the page contains, along with the description (see below).
+> The combined length of the page title and your business name MUST NOT exceed **60 characters**. Be very cognizant of this, and repeatedly check to make sure you're not exceeding this length.
+
+As you create pages in your website, certain fields get translated into both visual and non-visual elements. The page title is one of the most important elements in your site. It tells the search engine about your page, and you can include keywords in the title as well as the URL. The title displays in the top of the browser tab. In Squarespace, you can enter the page title when you create your page, but you must be diligent about filling in the SEO tab. If not, search results containing your pages will not look good, and end-users may not be able to discover your content. 
+
+As a side note, you can also change the name of the navigation label shown in your website's menus. E.g. your home page URL is /Home, the title is Home, but navigation says 'Main Page' for example. I don't recommend this approach. In addition, SEO best practices recommend that words from your title appear in the h1, or Heading 1, tag of your page. It helps to correlate the page title with the content of the page.
+### Descriptions
+> [!IMPORTANT]
+> The words you put into this field become the snippet of text displayed in the search results. The description must be a succinct, precise description of what the page contains. It must include keywords and other information that will make this page relevant to your business. It is generally accepted that the content of the description must be between **100 and 160 characters long**, so you must get very creative in describing the page content. If you go over 160 characters you risk having important information cut off. Most SEO tools will warn you if the description is too long.
+
+The description of your page comes from one of two places: 1) whatever text is in the first paragraph of your page, or 2) the Page Settings | SEO | SEO Description field. The only exception to this is the home page, where the value will come from the Settings | Marketing | SEO Appearance tab. If you do not fill out the SEO description field, the search results will be chosen by the search engine, and may not be what you want to have end-users understand about the content of the page. For proper SEO best practices, you MUST fill out the SEO description for EVERY page of your website.
+
+E.g. From our FAQ page, "Here's the answers to some frequently asked questions about Pooch Kingdom's products and offerings. Use the contact form if you have further questions". It is 150 characters long, and portrays exactly what we want to say without any fluff. It is using keyworks pertaining to our site and business, and tells the search engine this is a contact page. Using the company name or product names in the title and description reinforce the message.
+### Alt Text
+
+### Opengraph
+
 
 ## Fix Product JSON-LD
 The script runs after DOM loading, and looks for the Product JSON-LD added by Squarespace. Using a tool like Ahrefs Toolbar, you will see that the brand, priceValidUntil, and merchantReturnPolicy are all missing. This script grabs the broken Product entry, then overwrites the existing Product with the modified version. Having correctly formatted Product entries increases your chances of Google, Bing, etc., from listing your product pages as snippets.
@@ -51,13 +76,19 @@ Make a copy of "Fix Invalid Product JSON-LD.js" and use your favorite editor to 
 A minifier remove debugging code, comments, all white space, and shrinks the code to optimize execution time. E.g. https://www.toptal.com/developers/javascript-minifier
 
 1) Use the sample code provided ("Fix Invalid Product JSON-LD.min.js") to form the structure of your modified version of the script.
-2) Copy everything from within the script tags into the minifier.
+2) Copy everything from within the script tags of the normal JavaScript file into the minifier.
 3) Remove all the comments from the code.
 4) Run the minifier.
 5) Copy the minified code into the body of the script tags.
 6) Replace the debuggable code from you Code Injection location, and replace it with the minified script.
 7) Test your minified script per the "Testing" section above.
 
+## Replace Invalid JSON-LD
+This script is a bit more involved from the preparation standpoint. In order to get passes by Google and Microsoft on your structured data, we have to fix the incomplete Organization, LocalBusiness, and WebSite entries put in place by Squarespace. This script contains properly formatted versions of each of these three objects, and it then replaces the versions statically included by Squarespace. When it is done, your pages will have everything the search engines need for creating snippets about your business.
+
+You must study the Schema.org documentation for the different entities. You can use the data provided in the samples to get started. Some of you will have simpler versions of this data; some will be more complex.
+### WebSite Data
+This is the easiest one to deal with
 
 
 
